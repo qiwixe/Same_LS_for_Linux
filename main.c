@@ -18,7 +18,7 @@ typedef struct {
 } FileInfo;
 
 void header() {
-    printf("%-11s %-6s %-10s %-10s %-10s %-16s %s\n",
+    printf("%-11s %3s %-8s %-8s %8s %-12s %s\n",
            "ПРАВА",
            "ССЫЛКИ",
            "ВЛАДЕЛЕЦ",
@@ -95,6 +95,21 @@ int get_info(const int lflag,const char *path, FileInfo file[] ) {
     return count;
 }
 
+void print_file_info(FileInfo file, int lflag) {
+    if (lflag) {
+        printf("%-11s %3ld %-8s %-8s %8ld %-12s %s\n",
+                    file.permissions,
+                    file.links,
+                    file.owner,
+                    file.group,
+                    file.size,
+                    file.date,
+                    file.name);
+    } else {
+        printf("%s\n", file.name);
+    }
+}
+
 int main(int argc, char *argv[]) {
 
     int lflag = 0;
@@ -126,30 +141,10 @@ int main(int argc, char *argv[]) {
     count = get_info(lflag, path, file);
 
     //print
-    if (lflag) {
-        header();
-        if (rflag) {
-            for (int i = 0; i < count; ++i) {
-                printf("%-11s %3ld %-8s %-8s %8ld %-12s %s\n",
-                    file[count-i].permissions,
-                    file[count-i].links,
-                    file[count-i].owner,
-                    file[count-i].group,
-                    file[count-i].size,
-                    file[count-i].date,
-                    file[count-i].name);
-            }
-        }
-            for (int i = 0; i < count; ++i) {
-                printf("%-11s %3ld %-8s %-8s %8ld %-12s %s\n",
-                    file[i].permissions,
-                    file[i].links,
-                    file[i].owner,
-                    file[i].group,
-                    file[i].size,
-                    file[i].date,
-                    file[i].name);
-        }
-    }
+    for (int i = (rflag ? count-1 : 0);
+     (rflag ? i >= 0 : i < count);
+     (rflag ? i-- : i++))
+        print_file_info(file[i],lflag);
+
     return 0;
 }
