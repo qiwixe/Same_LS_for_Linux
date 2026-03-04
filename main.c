@@ -18,7 +18,7 @@ typedef struct {
 } FileInfo;
 
 void header() {
-    printf("%-11s %3s %-8s %-8s %8s %-12s %s\n",
+    printf("%-11s %6s %-8s %-8s %14s %-12s %s\n",
            "ПРАВА",
            "ССЫЛКИ",
            "ВЛАДЕЛЕЦ",
@@ -40,7 +40,7 @@ void size(long size) {
         sz /= 1024;
         i++;
     }
-    printf("%6.1f%s", sz, units[i]);
+    printf("%6.1f%s ", sz, units[i]);
 }
 
 void generate_permissions(char *perm, mode_t mode) {
@@ -113,7 +113,7 @@ void print_file_info(FileInfo file, int lflag, int hflag) {
         if (hflag) {
             size(file.size);
         }else {
-            printf("%8ld",file.size );
+            printf("%8ld ",file.size );
         }
         printf("%-13s %s\n",
             file.date,
