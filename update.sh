@@ -4,7 +4,7 @@
 
 set -e
 
-git fetch origin > /dev/null
+git reset --hard > /dev/null
 git pull origin > /dev/null
 
 mkdir -p build > /dev/null
