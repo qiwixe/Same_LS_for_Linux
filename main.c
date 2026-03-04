@@ -32,7 +32,7 @@ void header() {
 
 //-h
 void size(long size) {
-    const char *units[] = {"B", "Kb", "Mb", "Gb", "Tb"};
+    const char *units[] = {"B", "K", "M", "G", "T"};
     int i = 0;
     double sz = (double)size;
 
