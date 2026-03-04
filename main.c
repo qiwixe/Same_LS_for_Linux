@@ -40,7 +40,7 @@ void size(long size) {
         sz /= 1024;
         i++;
     }
-    printf("%6.1f%s", sz, units[i]);
+    printf("%6.1f%1s", sz, units[i]);
 }
 
 void generate_permissions(char *perm, mode_t mode) {
