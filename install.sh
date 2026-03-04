@@ -3,6 +3,9 @@
 
 set -e  # Прерывать скрипт при любой ошибке
 
+sudo apt update
+sudo apt install -y cmake
+
 echo "Создаём папку сборки..."
 mkdir -p build
 cd build
