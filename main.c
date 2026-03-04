@@ -18,7 +18,7 @@ typedef struct {
 } FileInfo;
 
 void header() {
-    printf("%-10s %-6s %-8s %-8s %-8s %-12s %s\n",
+    printf("%-10s %-6s %-6s %-6s %-10s %-12s %s\n",
                "PERM",
                "LINK",
                "OWNER",
