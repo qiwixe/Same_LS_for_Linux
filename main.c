@@ -31,8 +31,16 @@ void header() {
 }
 
 //-h
-void size() {
+void size(long size) {
+    const char *units[] = {"B", "Kb", "Mb", "Gb", "Tb"};
+    int i = 0;
+    double sz = (double)size;
 
+    while (sz >= 1024 && i < 4) {
+        sz /= 1024;
+        i++;
+    }
+    printf("%.1f%s", sz, units[i]);
 }
 
 void generate_permissions(char *perm, mode_t mode) {
@@ -95,16 +103,21 @@ int get_info(const int lflag,const char *path, FileInfo file[] ) {
     return count;
 }
 
-void print_file_info(FileInfo file, int lflag) {
+void print_file_info(FileInfo file, int lflag, int hflag) {
     if (lflag) {
-        printf("%-11s %3ld %-8s %-8s %8ld %-12s %s\n",
-                    file.permissions,
-                    file.links,
-                    file.owner,
-                    file.group,
-                    file.size,
-                    file.date,
-                    file.name);
+        printf("%-11s %3ld %-8s %-8s",
+            file.permissions,
+            file.links,
+            file.owner,
+            file.group);
+        if (hflag) {
+            size(file.size);
+        }else {
+            printf("%8ld",file.size );
+        }
+        printf("%-12s %s\n",
+            file.date,
+            file.name);
     } else {
         printf("%s\n", file.name);
     }
@@ -124,7 +137,7 @@ int main(int argc, char *argv[]) {
     //Обработка аргументов
     while ((opt = getopt(argc, argv, "lhr")) != -1) {
         switch (opt) {
-            case 'l': lflag = 1; break;
+            case 'l': lflag = 1; header(); break;
             case 'h': hflag = 1; break;
             case 'r': rflag = 1; break;
             default:
@@ -144,7 +157,7 @@ int main(int argc, char *argv[]) {
     for (int i = (rflag ? count-1 : 0);
      (rflag ? i >= 0 : i < count);
      (rflag ? i-- : i++))
-        print_file_info(file[i],lflag);
+        print_file_info(file[i],lflag,hflag);
 
     return 0;
 }
