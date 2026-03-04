@@ -18,7 +18,7 @@ typedef struct {
 } FileInfo;
 
 void header() {
-    printf("%-11s %6s %-8s %-8s %14s %-12s %s\n",
+    printf("%-11s %24s %-8s %-8s %14s %-12s %s\n",
            "ПРАВА",
            "ССЫЛКИ",
            "ВЛАДЕЛЕЦ",
