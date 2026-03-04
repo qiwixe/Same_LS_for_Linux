@@ -3,8 +3,8 @@
 
 set -e  # Прерывать скрипт при любой ошибке
 
-sudo apt update > /dev/null
-sudo apt install -y cmake > /dev/null
+sudo apt-get update > /dev/null
+sudo apt-get install -y cmake > /dev/null
 
 mkdir -p build > /dev/null
 cd build > /dev/null
