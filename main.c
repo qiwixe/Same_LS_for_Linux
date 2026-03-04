@@ -40,7 +40,7 @@ void size(long size) {
         sz /= 1024;
         i++;
     }
-    printf("%6.1f%s ", sz, units[i]);
+    printf("%6.1f%s", sz, units[i]);
 }
 
 void generate_permissions(char *perm, mode_t mode) {
@@ -105,7 +105,7 @@ int get_info(const int lflag,const char *path, FileInfo file[] ) {
 
 void print_file_info(FileInfo file, int lflag, int hflag) {
     if (lflag) {
-        printf("%-11s %3ld %-8s %-8s",
+        printf("%-11s %3ld %-8s %-8s ",
             file.permissions,
             file.links,
             file.owner,
@@ -113,9 +113,9 @@ void print_file_info(FileInfo file, int lflag, int hflag) {
         if (hflag) {
             size(file.size);
         }else {
-            printf("%8ld ",file.size );
+            printf("%8ld",file.size );
         }
-        printf("%-13s %s\n",
+        printf(" %-13s %s\n",
             file.date,
             file.name);
     } else {
