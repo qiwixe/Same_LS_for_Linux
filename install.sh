@@ -3,20 +3,14 @@
 
 set -e  # Прерывать скрипт при любой ошибке
 
-sudo apt update
-sudo apt install -y cmake
+sudo apt update > /dev/null
+sudo apt install -y cmake > /dev/null
 
-echo "Создаём папку сборки..."
-mkdir -p build
-cd build
+mkdir -p build > /dev/null
+cd build > /dev/null
+cmake .. > /dev/null
+make > /dev/null
 
-echo "Конфигурируем проект с помощью CMake..."
-cmake ..
-
-echo "Собираем проект..."
-make
-
-echo "Устанавливаем test-ls в /usr/local/bin..."
-sudo make install
+sudo make install > /dev/null
 
 echo "Установка завершена. Вы можете вызвать 'test-ls'."

@@ -3,7 +3,7 @@
 
 set -e
 
-echo "Удаляем test-ls из /usr/local/bin..."
-sudo rm -f /usr/local/bin/test-ls
+echo "Удаление test-ls"
+sudo rm -f /usr/local/bin/test-ls > /dev/null
 
 echo "Удаление завершено."

@@ -4,17 +4,13 @@
 
 set -e
 
-echo "Создаём/переходим в папку сборки..."
-mkdir -p build
-cd build
+git fetch origin > /dev/null
+git pull origin > /dev/null
 
-echo "Конфигурируем проект с помощью CMake..."
-cmake ..
-
-echo "Собираем проект..."
-make
-
-echo "Обновляем test-ls в /usr/local/bin..."
-sudo make install
+mkdir -p build > /dev/null
+cd build > /dev/null
+cmake .. > /dev/null
+make > /dev/null
+sudo make install > /dev/null
 
 echo "Обновление завершено."
