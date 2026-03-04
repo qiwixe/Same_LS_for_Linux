@@ -19,8 +19,8 @@ typedef struct {
 
 void header() {
     printf("%-11s %5s %-10s %-10s %10s %-12s %s\n",
-               "PERMISSIONS",
-               "LINKS",
+               "PERM",
+               "LINK",
                "OWNER",
                "GROUP",
                "SIZE",
