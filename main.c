@@ -115,7 +115,7 @@ void print_file_info(FileInfo file, int lflag, int hflag) {
         }else {
             printf("%8ld",file.size );
         }
-        printf("%-12s %s\n",
+        printf("%12s %s\n",
             file.date,
             file.name);
     } else {
