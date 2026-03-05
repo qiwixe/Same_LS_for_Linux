@@ -267,7 +267,7 @@ int main(int argc, char *argv[]) {
     //Обработка аргументов
     while ((opt = getopt(argc, argv, "lhr")) != -1) {
         switch (opt) {
-            case 'l': lflag = 1; header(); break;
+            case 'l': lflag = 1; break;
             case 'h': hflag = 1; break;
             case 'r': rflag = 1; break;
             default:
@@ -282,6 +282,10 @@ int main(int argc, char *argv[]) {
     }
 
     count = get_info(lflag, path, file);
+
+    if (lflag) {
+        header();
+    }
 
     //print
     for (int i = (rflag ? count-1 : 0);
