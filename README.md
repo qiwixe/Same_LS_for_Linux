@@ -14,9 +14,18 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install git
 
 git clone https://github.com/qiwixe/Same_LS_for_Linux.git
-cd Same_LS_for_Linux
+cd Same_LS_for_Linux/
 
 sudo ./install.sh
+```
+## Обновление утилиты
+```bash
+sudo ./update.sh
+```
+## Удаление утилиты
+```bash
+sudo ./uninstall.sh
+rm -rf Same_LS_for_Linux/
 ```
 ## Использование
 ```bash
